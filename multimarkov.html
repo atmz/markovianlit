@@ -1,0 +1,81 @@
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+ <title>words in various orders</title>
+<meta charset=utf-8><meta name="viewport" content="initial-scale=1">
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script src="jquery.cookie.js"></script>
+<link rel="stylesheet"  href="markov.css" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  
+<script>
+ // Google Analytics
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-45566128-1', 'at443.net');
+  ga('send', 'pageview');
+
+</script>
+  
+
+<script>
+
+//get new data
+function getText()
+{
+var e = document.getElementById("corpi");
+var corpus = "";
+
+$("input:checkbox[name=corpi]:checked").each(function()
+{
+     corpus = corpus + $(this).attr("id") + "|";
+});   
+var strLen = corpus.length;
+corpus = corpus.slice(0,strLen-1);
+
+$.getJSON( "getMarkovJSON.php", { corpus: corpus} )
+  .done(function( newData ) {
+  var para="";
+  newData.forEach(function(sentence) {
+    para =  para + sentence;
+	});
+  document.getElementById("text").innerHTML=para;
+  })
+  .fail(function( jqxhr, textStatus, error ) {
+    var err = textStatus + ", " + error;
+    console.log( "Request Failed: " + err );
+});
+
+}
+
+$( "#corpi" ).buttonset();
+
+</script>
+
+<body>
+<div id="tagline">markov chain generator</div><br><span id="status"></span>
+
+<div id="corpi">
+  <input type="checkbox" id="aw" name="corpi" checked="checked"><label for="aw">Alice</label>
+  <input type="checkbox" id="cd" name="corpi"><label for="cd">Charles Dickens</label>
+  <input type="checkbox" id="ow" name="corpi"><label for="ow">Dorian Grey</label>
+  <input type="checkbox" id="ja" name="corpi"><label for="ja">Jane Austen</label>
+  <input type="checkbox" id="mt" name="corpi"><label for="mt">Huck Finn</label>
+  <input type="checkbox" id="hg" name="corpi"><label for="hg">Hunger Games</label>
+  <input type="checkbox" id="sh" name="corpi"><label for="sh">Sherlock</label>
+</div>
+ 
+
+<button onclick="getText()">Generate</button>
+<div id="text_outer"><div id="text"></div></div>
+
+ 
+
+
+</body>
+</html>

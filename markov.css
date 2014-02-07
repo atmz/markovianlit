@@ -1,0 +1,81 @@
+#entry_line {
+  width: 100%; 
+  text-align: center;
+}
+#tagline {
+  width: 100%; 
+  text-align: center;
+  color:#777;
+  font: 12px Helvetica, sans-serif;
+}
+#note_entry {
+  width: 80%;
+  margin:auto;
+  font: 16px Helvetica, sans-serif;
+}
+#amount
+{
+color:#777;
+text-align:center;
+font: 72px Helvetica, sans-serif;
+}
+
+#slider_line {
+  width: 100%; 
+}
+#slider
+{
+	width: 90%; 
+  text-align: center;
+  margin: 0 auto;
+}
+
+#resultsTable
+{
+	width: 90%; 
+	text-align:center;
+  margin: 0 auto;
+}
+#text {
+  font: 16px Helvetica, sans-serif;
+  color:#555;
+	text-align:left;
+	margin: auto;
+	min-width:60%;
+	max-width:80%
+}
+#text_outer {
+  font: 16px Helvetica, sans-serif;
+  color:#555;
+	text-align:center;
+	margin: auto;
+	min-width:100%;
+	max-width:100%
+}
+#buttons {
+  font: 16px Helvetica, sans-serif;
+  color:#555;
+	text-align:center;
+	display:inline-block;
+	min-width:100%;
+	max-width:100%
+}
+#corpi {
+	text-align:center;
+	min-width:100%;
+	max-width:100%
+}
+label {
+  font: 16px Helvetica, sans-serif;
+  color:#555;
+	text-align:center;
+	min-width:100%;
+	max-width:100%
+}
+.aw { color: red }
+.cd { color: darkblue }
+.ow { color: grey }
+.ja { color: green }
+.mt { color: blue }
+.hg { color: purple }
+.sh { color: brown }
